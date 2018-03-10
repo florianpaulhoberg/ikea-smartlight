@@ -39,16 +39,17 @@ def main():
 
     hubip = conf.get('tradfri', 'hubip')
     securityid = conf.get('tradfri', 'securityid')
+    dtlstoken = conf.get('tradfri', 'dtlstoken')
 
     lightbulb = []
     lightgroup = []
 
     print('[ ] Tradfri: acquiring all Tradfri devices, please wait ...')
-    devices = tradfriStatus.tradfri_get_devices(hubip, securityid)
-    groups = tradfriStatus.tradfri_get_groups(hubip, securityid)
+    devices = tradfriStatus.tradfri_get_devices(hubip, securityid, dtlstoken)
+    groups = tradfriStatus.tradfri_get_groups(hubip, securityid, dtlstoken)
 
     for deviceid in tqdm(range(len(devices)), desc='Tradfri lightbulbs', unit=' lightbulb'):
-        lightbulb.append(tradfriStatus.tradfri_get_lightbulb(hubip, securityid,
+        lightbulb.append(tradfriStatus.tradfri_get_lightbulb(hubip, securityid, dtlstoken,
                                                              str(devices[deviceid])))
 
     # sometimes the request are to fast, the will decline the request (flood security)
@@ -56,7 +57,7 @@ def main():
     time.sleep(.5)
 
     for groupid in tqdm(range(len(groups)), desc='Tradfri groups', unit=' group'):
-        lightgroup.append(tradfriStatus.tradfri_get_group(hubip, securityid,
+        lightgroup.append(tradfriStatus.tradfri_get_group(hubip, securityid, dtlstoken, 
                                                           str(groups[groupid])))
 
     print('[+] Tradfri: device information gathered')
