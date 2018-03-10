@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
-# file        : tradfri-status.py
+# file        : tradfri-lights.py
 # purpose     : getting status from the Ikea tradfri smart lights
 #
 # author      : harald van der laan
-# date        : 2017/04/10
-# version     : v1.1.0
+# date        : 2018/03/10
+# version     : v1.1.1
 #
 # changelog   :
+# - v1.1.1      support for semi-static dTLS tokens                     (florian)
 # - v1.1.0      refactor for cleaner code                               (harald)
 # - v1.0.0      initial concept                                         (harald)
 
