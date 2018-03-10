@@ -8,7 +8,7 @@
 # version     : v1.1.1
 #
 # changelog   :
-# - v1.1.1      support for semi-static dTLS tokens                     (florian)
+# - v1.1.1      support for semi-static dTLS tokens, unicode support    (florian)
 # - v1.1.0      refactor for cleaner code                               (harald)
 # - v1.0.0      initial concept                                         (harald)
 
@@ -67,11 +67,11 @@ def main():
     for _ in range(len(lightbulb)):
         try:
             if lightbulb[_]["3311"][0]["5850"] == 0:
-                print('bulb ID {}, name: {}, brightness: {}, state: off'
+                print(u'bulb ID {}, name: {}, brightness: {}, state: off'
                       .format(lightbulb[_]["9003"], lightbulb[_]["9001"],
                               lightbulb[_]["3311"][0]["5851"]))
             else:
-                print('bulb ID {}, name: {}, brightness: {}, state: on'
+                print(u'bulb ID {}, name: {}, brightness: {}, state: on'
                       .format(lightbulb[_]["9003"], lightbulb[_]["9001"],
                               lightbulb[_]["3311"][0]["5851"]))
         except KeyError:
@@ -82,10 +82,10 @@ def main():
 
     for _ in range(len(lightgroup)):
         if lightgroup[_]["5850"] == 0:
-            print('group ID: {}, name: {}, state: off'
+            print(u'group ID: {}, name: {}, state: off'
                   .format(lightgroup[_]["9003"], lightgroup[_]["9001"]))
         else:
-            print('group ID: {}, name: {}, state: on'
+            print(u'group ID: {}, name: {}, state: on'
                   .format(lightgroup[_]["9003"], lightgroup[_]["9001"]))
 
 if __name__ == "__main__":
